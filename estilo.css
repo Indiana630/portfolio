@@ -12,7 +12,8 @@
         /* *********************/
         /* seccion I N I C I O */
         /* *********************/
-        
+  
+
         #inicio {
             background: linear-gradient( rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url("img/fondo-inicio.jpg");
             background-size: cover;
@@ -40,6 +41,10 @@
         #inicio .contenido header .contenido-header h1 {
             text-align: center;
             color: #67ff50;
+        }
+
+        #inicio .contenido header .contenido-header img {
+            max-width: 50%;
         }
         
         #inicio .contenido header .contenido-header nav ul {
@@ -287,7 +292,7 @@
         /* *********************/
         /* seccion S K I L L S */
         /* *********************/
-        
+
         .contenedor-skills {
             background: linear-gradient( #42e155cc, rgba(33, 16, 16, 0.8)), url("img/fondo-skills.jpg");
             background-attachment: fixed;
@@ -375,7 +380,7 @@
                 width: 0;
             }
             100% {
-                width: 45%;
+                width: 80%;
             }
         }
 
@@ -398,7 +403,7 @@
         }
         
         #portfolio .titulo-seccion {
-            text-align: center;
+            text-align: justify;
             font-size: 22px;
             text-transform: uppercase;
             color: #111135;
@@ -579,7 +584,7 @@
                 padding: 8px;
             }
             #sobremi .sobremi .titulo-seccion {
-                text-align: center;
+                text-align: justify;
             }
             #sobremi .sobremi h2 {
                 font-size: 25px;

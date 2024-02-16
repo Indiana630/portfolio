@@ -8,10 +8,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $destinatario = "pepecz6305@gmail.com";
 
-    $asunto = "Mensaje de contacto desde el formulario";
+    $asunto = "Nuevo mensaje, asunto: $tema";
 
     $contenido = "Nombre: $nombre\n";
     $contenido .= "Email: $email\n\n";
+    $contenido .= "Tema: \n$tema\n";
     $contenido .= "Mensaje:\n$mensaje\n";
 
     $headers = "From: $nombre <$email>";
