@@ -1,24 +1,46 @@
 <?php
-$name = $_POST['nombre'];
-$mail = $_POST['email'];
+$servername = "localhost";
+$username = "formulario";
+$password = "P4ssw0rd";
+$dbname = "formulariodb";
+
+// Procesar los datos del formulario
+$nombre = $_POST['nombre'];
+$email = $_POST['email'];
 $tema = $_POST['tema'];
-$message = $_POST['mensaje'];
+$mensaje = $_POST['mensaje'];
 
-$header = 'From: ' . $mail . " \r\n";
-$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-$header .= "Mime-Version: 1.0 \r\n";
-$header .= "Content-Type: text/plain";
+// Guardar los datos en la base de datos
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
 
-$message = "Este mensaje fue enviado por: " . $name . " \r\n";
-$message .= "Su e-mail es: " . $mail . " \r\n";
-$message .= "Tema: " . $tema . " \r\n";
-$message .= "Mensaje: " . $_POST['message'] . " \r\n";
-$message .= "Enviado el: " . date('d/m/Y', time());
+$sql = "INSERT INTO respuestas (nombre, email, tema, mensaje) VALUES ('$nombre', '$email', '$tema', '$mensaje')";
+if ($conn->query($sql) === TRUE) {
+    echo "Respuesta guardada en la base de datos correctamente";
+} else {
+    echo "Error al guardar la respuesta en la base de datos: " . $conn->error;
+}
+$conn->close();
 
-$para = 'pepecz6305@gmail.com';
-$asunto = 'Mensaje del portfolio:' . $tema;
+// Enviar mensaje a Discord a través de la webhook (reemplaza la URL con la tuya)
+$webhook_url = 'https://discord.com/api/webhooks/1208370304460791848/US3n3sX5AJc_qUMIGAR0DBa0Bjqz14gSHwmraCG0Dkj12noEcmVq7UYuxJd9Z369hPur';
+$message = "Nuevo mensaje recibido:\nNombre: $nombre\nEmail: $email\nTema: $tema\nMensaje: $mensaje";
 
-mail($para, $asunto, utf8_decode($message), $header);
+$data = array('content' => $message);
+$curl = curl_init($webhook_url);
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 
-header("Location:index.html");
+$response = curl_exec($curl);
+curl_close($curl);
+
+// Manejo de la respuesta de Discord (puedes hacer algo con ella si lo necesitas)
+var_dump($response);
+
+header("Location: enviado.htm");
+
 ?>
