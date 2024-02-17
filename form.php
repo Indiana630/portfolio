@@ -41,6 +41,6 @@ curl_close($curl);
 // Manejo de la respuesta de Discord (puedes hacer algo con ella si lo necesitas)
 var_dump($response);
 
-header("Location: enviado.htm");
+header("Location: pages/enviado.htm");
 
 ?>
