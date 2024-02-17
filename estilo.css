@@ -1,3 +1,4 @@
+        @import url('https://fonts.googleapis.com/css2?family=Honk&family=Nabla&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap');
         * {
             margin: 0;
@@ -5,7 +6,6 @@
             box-sizing: border-box;
             font-family: 'Montserrat';
         }
-        
         html {
             scroll-behavior: smooth;
         }
@@ -106,8 +106,19 @@
         }
         
         #inicio .contenido .presentacion h2 span {
-            font-size: 25px;
+            font-size: 50px;
             color: #67ff50;
+            font-family: "Nabla", system-ui;    
+            font-optical-sizing: auto;
+            font-weight: 400;   
+            font-style: normal;
+            font-variation-settings:
+              "EDPT" 100,
+              "EHLT" 12;
+        }
+
+        #inicio .contenido .presentacion hr {
+            color: white; background-color: black; width:50%;
         }
         
         #inicio .contenido .presentacion .descripcion {
@@ -450,6 +461,7 @@
             bottom: -40px;
             transition: .5s;
         }
+
         
         #portfolio .fila .proyecto:hover .info {
             opacity: 1;

@@ -1,27 +1,24 @@
 <?php
+$name = $_POST['nombre'];
+$mail = $_POST['email'];
+$tema = $_POST['tema'];
+$message = $_POST['mensaje'];
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $nombre = $_POST['nombre'];
-    $email = $_POST['email'];
-    $tema = $_POST['tema'];
-    $mensaje = $_POST['mensaje'];
+$header = 'From: ' . $mail . " \r\n";
+$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+$header .= "Mime-Version: 1.0 \r\n";
+$header .= "Content-Type: text/plain";
 
-    $destinatario = "pepecz6305@gmail.com";
+$message = "Este mensaje fue enviado por: " . $name . " \r\n";
+$message .= "Su e-mail es: " . $mail . " \r\n";
+$message .= "Tema: " . $tema . " \r\n";
+$message .= "Mensaje: " . $_POST['message'] . " \r\n";
+$message .= "Enviado el: " . date('d/m/Y', time());
 
-    $asunto = "Nuevo mensaje, asunto: $tema";
+$para = 'pepecz6305@gmail.com';
+$asunto = 'Mensaje del portfolio:' . $tema;
 
-    $contenido = "Nombre: $nombre\n";
-    $contenido .= "Email: $email\n\n";
-    $contenido .= "Tema: \n$tema\n";
-    $contenido .= "Mensaje:\n$mensaje\n";
+mail($para, $asunto, utf8_decode($message), $header);
 
-    $headers = "From: $nombre <$email>";
-
-    if(mail($destinatario, $asunto, $contenido, $headers)){
-        echo "Tu mensaje ha sido enviado con éxito.";
-    } else{
-        echo "Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.";
-    }
-}
-
+header("Location:index.html");
 ?>
