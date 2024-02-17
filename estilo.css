@@ -355,14 +355,14 @@
         }
         
         .contenedor-skills .skill .barra .barra-progreso3 {
-            background-color: #fff;
+            background-color: blue;
             width: 90%;
             height: 6px;
             animation: progreso3 2s forwards;
         }
         
         .contenedor-skills .skill .barra .barra-progreso4 {
-            background-color: #fff;
+            background-color: #ffff00;
             width: 85%;
             height: 6px;
             animation: progreso4 2s forwards;
@@ -382,7 +382,7 @@
                 width: 0;
             }
             100% {
-                width: 40%;
+                width: 80%;
             }
         }
         
@@ -391,7 +391,7 @@
                 width: 0;
             }
             100% {
-                width: 80%;
+                width: 92%;
             }
         }
 
@@ -400,7 +400,7 @@
                 width: 0;
             }
             100% {
-                width: 92%;
+                width: 100%;
             }
         }
         /* *********************/
@@ -461,7 +461,7 @@
             bottom: -40px;
             transition: .5s;
         }
-
+        
         
         #portfolio .fila .proyecto:hover .info {
             opacity: 1;
@@ -529,6 +529,25 @@
         }
         
         #contacto .btn-enviar:hover {
+            background-color: #67ff50;
+            color: #fff;
+        }
+
+        
+        #contacto .btn-extra {
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 20px;
+            border: none;
+            border: 1px solid #919191;
+            display: block;
+            margin: auto;
+            cursor: pointer;
+            transition: .5s;
+            padding: 10px 15px !important;
+        }
+        
+        #contacto .btn-extra:hover {
             background-color: #67ff50;
             color: #fff;
         }
