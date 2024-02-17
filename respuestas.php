@@ -89,7 +89,7 @@
             echo "<form action='' method='post'>";
             echo "<label for='password'>Contraseña:</label>";
             echo "<input type='password' id='password' name='password'>";
-            echo "<input type='submit' value='Iniciar Sesión'>";
+            echo "<input type='submit' name='submit_login' value='Iniciar Sesión'>";
             echo "</form>";
         }
     } else {
@@ -97,7 +97,7 @@
         echo "<form action='' method='post'>";
         echo "<label for='password'>Contraseña:</label>";
         echo "<input type='password' id='password' name='password'>";
-        echo "<input type='submit' value='Iniciar Sesión'>";
+        echo "<input type='submit' name='submit_login' value='Iniciar Sesión'>";
         echo "</form>";
     }
     ?>
