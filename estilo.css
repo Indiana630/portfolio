@@ -90,10 +90,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            border-radius: 20px;
-            border: none;
-            border: 1px solid #919191;
+            
         }
         
         #inicio .contenido .presentacion .bienvenida {
@@ -163,6 +160,12 @@
             padding: 100px 15px;
             color: #111135;
             display: flex;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        #sobremi.show {
+            opacity: 1;
         }
         
         #sobremi .contenedor-foto {
