@@ -13,18 +13,26 @@
             text-align: left;
         }
     </style>
+    <script>
+        function submitForm(action) {
+            document.getElementById('form_action').value = action;
+            document.getElementById('consultar_respuestas_form').submit();
+        }
+    </script>
 </head>
 <body>
     <?php
     // Verifica si se ha enviado el formulario de inicio de sesión
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_login"])) {
         $password = $_POST["password"];
 
         // Verifica la contraseña maestra
         if ($password == "P4ssw0rd") { // Reemplaza "tu_contraseña_maestra" con tu contraseña real
             // Si la contraseña es correcta, muestra las respuestas
             echo "<h2>Respuestas del Formulario</h2>";
-            echo "<form action='' method='post'>";
+            echo "<form id='consultar_respuestas_form' action='' method='post'>";
+            echo "<input type='hidden' name='password' value='$password'>";
+            echo "<input type='hidden' name='form_action' id='form_action'>";
             echo "<table>";
             echo "<tr>";
             echo "<th>ID</th>";
@@ -47,7 +55,7 @@
                 die("Conexión fallida: " . $conn->connect_error);
             }
 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_action"]) && $_POST["form_action"] == "borrar") {
                 // Si se ha enviado un formulario para borrar una fila
                 if (isset($_POST["borrar"])) {
                     $id_borrar = $_POST["borrar"];
@@ -73,7 +81,7 @@
                     echo "<td>".$row["tema"]."</td>";
                     echo "<td>".$row["mensaje"]."</td>";
                     echo "<td>".$row["fecha"]."</td>";
-                    echo "<td><button type='submit' name='borrar' value='".$row["id"]."'>Borrar</button></td>";
+                    echo "<td><button type='button' onclick='submitForm(\"borrar\")' name='borrar' value='".$row["id"]."'>Borrar</button></td>";
                     echo "</tr>";
                 }
             } else {
